@@ -9,13 +9,13 @@ import kotlin.experimental.ExperimentalTypeInference
 
 @UnsafeNonEmptyCollectionApi
 inline fun <InputType, Key, Value> NonEmptyCollection<InputType>.wrapOperator(
-    operator: Iterable<InputType>.() -> Map<Key, Value>
+    noinline operator: Iterable<InputType>.() -> Map<Key, Value>
 ): NonEmptyMap<Key, Value> = wrapOperator(Unit, operator.addUnitParameter())
 
 @UnsafeNonEmptyCollectionApi
 inline fun <InputType, Parameter, Key, Value> NonEmptyCollection<InputType>.wrapOperator(
     parameter: Parameter,
-    operator: Iterable<InputType>.(Parameter) -> Map<Key, Value>
+    noinline operator: Iterable<InputType>.(Parameter) -> Map<Key, Value>
 ): NonEmptyMap<Key, Value> = wrapOperator(parameter, Unit, operator.addUnitParameter())
 
 @UnsafeNonEmptyCollectionApi
@@ -29,14 +29,14 @@ inline fun <InputType, FirstParameter, SecondParameter, Key, Value>
 @UnsafeNonEmptyCollectionApi
 inline fun <InputKey, InputValue, OutputKey, OutputValue>
         NonEmptyMap<InputKey, InputValue>.wrapOperator(
-    operator: Map<InputKey, InputValue>.() -> Map<OutputKey, OutputValue>
+    noinline operator: Map<InputKey, InputValue>.() -> Map<OutputKey, OutputValue>
 ): NonEmptyMap<OutputKey, OutputValue> = wrapOperator(Unit, operator.addUnitParameter())
 
 @UnsafeNonEmptyCollectionApi
 inline fun <InputKey, InputValue, Parameter, OutputKey, OutputValue>
         NonEmptyMap<InputKey, InputValue>.wrapOperator(
     parameter: Parameter,
-    operator: Map<InputKey, InputValue>.(Parameter) -> Map<OutputKey, OutputValue>
+    noinline operator: Map<InputKey, InputValue>.(Parameter) -> Map<OutputKey, OutputValue>
 ): NonEmptyMap<OutputKey, OutputValue> = wrapOperator(parameter, Unit, operator.addUnitParameter())
 
 @UnsafeNonEmptyCollectionApi
@@ -51,13 +51,13 @@ inline fun <InputKey, InputValue, FirstParameter, SecondParameter, OutputKey, Ou
 
 @UnsafeNonEmptyCollectionApi
 inline fun <InputKey, InputValue, Output> NonEmptyMap<InputKey, InputValue>.wrapOperator(
-    operator: Map<InputKey, InputValue>.() -> Iterable<Output>
+    noinline operator: Map<InputKey, InputValue>.() -> Iterable<Output>
 ): NonEmptyList<Output> = wrapOperator(Unit, operator.addUnitParameter())
 
 @UnsafeNonEmptyCollectionApi
 inline fun <InputKey, InputValue, Parameter, Output> NonEmptyMap<InputKey, InputValue>.wrapOperator(
     parameter: Parameter,
-    operator: Map<InputKey, InputValue>.(Parameter) -> Iterable<Output>
+    noinline operator: Map<InputKey, InputValue>.(Parameter) -> Iterable<Output>
 ): NonEmptyList<Output> = wrapOperator(parameter, Unit, operator.addUnitParameter())
 
 @UnsafeNonEmptyCollectionApi

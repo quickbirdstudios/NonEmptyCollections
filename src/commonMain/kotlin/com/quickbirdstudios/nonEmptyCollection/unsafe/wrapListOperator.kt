@@ -9,13 +9,13 @@ import kotlin.jvm.JvmName
 
 @UnsafeNonEmptyCollectionApi
 inline fun <InputType, OutputType> NonEmptyCollection<InputType>.wrapOperator(
-    operator: Iterable<InputType>.() -> List<OutputType>,
+    noinline operator: Iterable<InputType>.() -> List<OutputType>,
 ): NonEmptyList<OutputType> = wrapOperator(Unit, operator.addUnitParameter())
 
 @UnsafeNonEmptyCollectionApi
 inline fun <InputType, Parameter, OutputType> NonEmptyCollection<InputType>.wrapOperator(
     parameter: Parameter,
-    operator: Iterable<InputType>.(Parameter) -> List<OutputType>
+    noinline operator: Iterable<InputType>.(Parameter) -> List<OutputType>
 ): NonEmptyList<OutputType> = wrapOperator(parameter, Unit, operator.addUnitParameter())
 
 @UnsafeNonEmptyCollectionApi
@@ -29,14 +29,14 @@ inline fun <InputType, FirstParameter, SecondParameter, OutputType>
 @JvmName("wrapListOperator")
 @UnsafeNonEmptyCollectionApi
 inline fun <InputType, OutputType> NonEmptyCollection<InputType>.wrapOperator(
-    operator: List<InputType>.() -> List<OutputType>,
+    noinline operator: List<InputType>.() -> List<OutputType>,
 ): NonEmptyList<OutputType> = wrapOperator(Unit, operator.addUnitParameter())
 
 @JvmName("wrapListOperator")
 @UnsafeNonEmptyCollectionApi
 inline fun <InputType, Parameter, OutputType> NonEmptyCollection<InputType>.wrapOperator(
     parameter: Parameter,
-    operator: List<InputType>.(Parameter) -> List<OutputType>
+    noinline operator: List<InputType>.(Parameter) -> List<OutputType>
 ): NonEmptyList<OutputType> = wrapOperator(parameter, Unit, operator.addUnitParameter())
 
 @JvmName("wrapListOperator")
