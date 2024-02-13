@@ -1,3 +1,3 @@
 
-rootProject.name = "NonEmptyCollections"
+rootProject.name = "nonemptycollections"
 
