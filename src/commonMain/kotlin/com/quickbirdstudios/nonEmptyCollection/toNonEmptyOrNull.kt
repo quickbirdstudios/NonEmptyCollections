@@ -10,6 +10,6 @@ import com.quickbirdstudios.nonEmptyCollection.unsafe.toNonEmptySet
 
 fun <T> List<T>.toNonEmptyListOrNull() = if (isEmpty()) null else toNonEmptyList()
 
-fun <T> Set<T>.toNonEmptyMapOrNull() = if (isEmpty()) null else toNonEmptySet()
+fun <T> Set<T>.toNonEmptySetOrNull() = if (isEmpty()) null else toNonEmptySet()
 
 fun <K, V> Map<K, V>.toNonEmptyMapOrNull() = if (isEmpty()) null else toNonEmptyMap()
