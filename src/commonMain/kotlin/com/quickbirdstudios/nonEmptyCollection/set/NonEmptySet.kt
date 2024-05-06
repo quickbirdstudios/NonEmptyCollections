@@ -1,7 +1,11 @@
 package com.quickbirdstudios.nonEmptyCollection.set
 
 import com.quickbirdstudios.nonEmptyCollection.NonEmptyCollection
+import kotlin.js.ExperimentalJsExport
+import kotlin.js.JsExport
 
+@OptIn(ExperimentalJsExport::class)
+@JsExport
 class NonEmptySet<out T> internal constructor(
     internal val full: Set<T>
 ) : Set<T> by full, NonEmptyCollection<T> {

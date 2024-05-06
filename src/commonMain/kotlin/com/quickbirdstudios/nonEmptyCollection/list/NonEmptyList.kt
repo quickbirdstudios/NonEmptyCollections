@@ -1,7 +1,11 @@
 package com.quickbirdstudios.nonEmptyCollection.list
 
 import com.quickbirdstudios.nonEmptyCollection.NonEmptyCollection
+import kotlin.js.ExperimentalJsExport
+import kotlin.js.JsExport
 
+@OptIn(ExperimentalJsExport::class)
+@JsExport
 class NonEmptyList<out T> internal constructor(
     internal val full: List<T>
 ) : List<T> by full, NonEmptyCollection<T> {
