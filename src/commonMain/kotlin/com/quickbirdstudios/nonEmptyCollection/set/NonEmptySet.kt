@@ -1,7 +1,12 @@
+@file:OptIn(ExperimentalJsExport::class)
+
 package com.quickbirdstudios.nonEmptyCollection.set
 
 import com.quickbirdstudios.nonEmptyCollection.NonEmptyCollection
+import kotlin.js.ExperimentalJsExport
+import kotlin.js.JsExport
 
+@JsExport
 class NonEmptySet<out T> internal constructor(
     internal val full: Set<T>
 ) : Set<T> by full, NonEmptyCollection<T> {
@@ -26,5 +31,10 @@ class NonEmptySet<out T> internal constructor(
         require(full.isNotEmpty()) {
             "Fatal Error! This is a bug. Please contact the library author."
         }
+    }
+
+    companion object {
+        fun <T> fromArray(array: Array<out T>): NonEmptySet<T> =
+            array.toSet().let { NonEmptySet(it.first(), it - it.first()) }
     }
 }

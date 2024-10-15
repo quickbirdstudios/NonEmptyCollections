@@ -1,5 +1,11 @@
+@file:OptIn(ExperimentalJsExport::class)
+
 package com.quickbirdstudios.nonEmptyCollection
 
+import kotlin.js.ExperimentalJsExport
+import kotlin.js.JsExport
+
+@JsExport
 interface NonEmptyCollection<out T> : Collection<T> {
 
     @Deprecated(
